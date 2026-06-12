@@ -1,0 +1,227 @@
+/* ── Global Reset & Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #eef0f7;
+  color: #1e293b;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c8cad8; border-radius: 3px; }
+
+/* ── Shell ────────────────────────────────────────────────────────────── */
+.sc-shell {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #eef0f7;
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────── */
+.sc-topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid #d8dae8;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+}
+
+.sc-logo-icons { display: flex; gap: 4px; }
+.sc-logo-icon {
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+}
+.sc-brand { font-weight: 700; font-size: 1rem; color: #c8800a; letter-spacing: -0.01em; }
+.sc-status {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: #64748b;
+  display: flex; align-items: center; gap: 5px;
+}
+.sc-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #22c55e;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* ── Chat panel (centred card) ────────────────────────────────────────── */
+.sc-chat-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 0.5rem;
+  overflow: hidden;
+}
+
+.sc-chat-card {
+  width: 100%;
+  max-width: 680px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f5f6fc;
+  border-radius: 22px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.04),
+    0 8px 32px rgba(90,100,180,0.10);
+  overflow: hidden;
+  border: 1.5px solid rgba(200,202,220,0.6);
+}
+
+/* Inner heading shown ONLY when no messages */
+.sc-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3rem 2rem;
+  pointer-events: none;
+}
+.sc-hero h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* ── CopilotKit overrides (light theme) ──────────────────────────────── */
+.sc-copilot-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.sc-copilot-wrap .copilotKitChat,
+.sc-copilot-wrap [class*="copilotKit"] {
+  background: transparent !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+/* Remove the default CopilotKit header */
+.sc-copilot-wrap [class*="header"],
+.sc-copilot-wrap header { display: none !important; }
+
+/* Input area */
+.sc-copilot-wrap [class*="input"],
+.sc-copilot-wrap textarea,
+.sc-copilot-wrap input[type="text"] {
+  background: #ffffff !important;
+  border: 1.5px solid #d0d3e4 !important;
+  border-radius: 14px !important;
+  color: #1e293b !important;
+  font-family: inherit !important;
+}
+.sc-copilot-wrap [class*="input"]:focus,
+.sc-copilot-wrap textarea:focus {
+  border-color: #7c83d6 !important;
+  box-shadow: 0 0 0 3px rgba(124,131,214,0.15) !important;
+}
+
+/* Message list */
+.sc-copilot-wrap [class*="messages"],
+.sc-copilot-wrap [class*="messageList"] {
+  background: transparent !important;
+  padding: 1rem !important;
+}
+
+/* Send button */
+.sc-copilot-wrap button[class*="send"],
+.sc-copilot-wrap button[type="submit"] {
+  background: #5a5fcf !important;
+  border-radius: 10px !important;
+}
+
+/* ── Suggestion pills ─────────────────────────────────────────────────── */
+.sc-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.75rem 1rem 1.1rem;
+}
+.sc-pill {
+  background: #fff;
+  border: 1.5px solid #d0d3e4;
+  border-radius: 20px;
+  padding: 0.38rem 1rem;
+  font-size: 0.78rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-family: inherit;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.sc-pill:hover {
+  border-color: #7c83d6;
+  color: #4f46e5;
+  background: #f0f1ff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(80,90,200,0.12);
+}
+
+/* ── Component registry styles ──────────────────────────────────────────  */
+.sc-card {
+  background: #fff;
+  border: 1.5px solid #e2e5f0;
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin: 0.4rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.sc-card h3 {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #5a5fcf;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+.sc-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.sc-col { flex: 1; min-width: 130px; }
+.sc-chart-label { font-size: 0.75rem; color: #64748b; margin-bottom: 3px; }
+.sc-chart-bar-wrap { background: #e8eaf5; border-radius: 4px; height: 7px; }
+.sc-chart-bar { height: 7px; border-radius: 4px; background: linear-gradient(90deg, #5a5fcf, #818cf8); }
+.sc-code {
+  background: #f8f9ff;
+  border: 1.5px solid #e2e5f0;
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  overflow-x: auto;
+  white-space: pre;
+  color: #334155;
+}
+.sc-btn {
+  background: #5a5fcf;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+.sc-btn:hover { background: #4f46e5; }
+.sc-disclaimer {
+  font-size: 0.7rem;
+  color: #e06b3f;
+  text-align: center;
+  padding: 0.4rem 0 0.2rem;
+}
