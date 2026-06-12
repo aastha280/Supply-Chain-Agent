@@ -1,0 +1,69 @@
+# Supply Chain Multi-Agent Configuration
+
+agents:
+  orchestrator:
+    name: "Supply Chain Orchestrator"
+    description: "Main supervisor agent that coordinates all supply chain sub-agents"
+    model: "gpt-4.1"
+
+  inventory_agent:
+    name: "Inventory Manager"
+    description: "Manages stock levels, reorder points, and inventory optimization"
+    tools:
+      - check_stock_levels
+      - reorder_inventory
+      - get_inventory_alerts
+
+  demand_agent:
+    name: "Demand Forecaster"
+    description: "Analyzes historical data and predicts future demand patterns"
+    tools:
+      - forecast_demand
+      - analyze_seasonality
+      - get_demand_trends
+
+  logistics_agent:
+    name: "Logistics Coordinator"
+    description: "Handles shipping schedules, route optimization, and delivery tracking"
+    tools:
+      - schedule_shipment
+      - track_delivery
+      - optimize_routes
+
+  supplier_agent:
+    name: "Supplier Manager"
+    description: "Manages supplier relationships, lead times, and vendor performance"
+    tools:
+      - get_supplier_info
+      - compare_vendors
+      - evaluate_supplier_risk
+
+  risk_agent:
+    name: "Risk Assessor"
+    description: "Monitors supply chain risks and provides disruption alerts"
+    tools:
+      - assess_risk
+      - get_risk_alerts
+      - scenario_analysis
+
+# Supply chain domain knowledge
+domain_knowledge:
+  inventory_management:
+    - "Reorder point = Safety stock + (Lead time × Average daily demand)"
+    - "Economic Order Quantity (EOQ) minimizes total inventory costs"
+    - "ABC analysis classifies inventory by importance and control requirements"
+
+  demand_forecasting:
+    - "Time series analysis identifies seasonal patterns"
+    - "Machine learning models predict demand based on historical trends"
+    - "External factors (weather, holidays, economic indicators) affect demand"
+
+  logistics:
+    - "Lead time variance impacts inventory requirements"
+    - "Route optimization reduces transportation costs"
+    - "Safety stock compensates for demand and lead time variability"
+
+  supplier_management:
+    - "Supplier reliability scores track on-time delivery performance"
+    - "Multi-sourcing reduces dependency risk"
+    - "Vendor managed inventory (VMI) shifts responsibility to supplier"
