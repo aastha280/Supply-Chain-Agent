@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "supply_chain_orchestrator": "./langgraph_entry.py:graph"
+  },
+  "env": ".env"
+}
